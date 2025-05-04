@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# 🕌 Rukū Counter App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
+![Built with React](https://img.shields.io/badge/built%20with-React-blue)
+![Built with TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-Enabled-orange)
 
-## Available Scripts
+> ⚠️ This project is currently **under development**. Features and accuracy will continue to improve over time.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a privacy-respecting ReactJS web application that uses a machine learning model (trained in YOLO format and converted to TensorFlow.js) to detect the **Rukū** posture during Islamic prayer and **count the number of times** it is performed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app does **not display your webcam feed**, in accordance with Islamic etiquette regarding prayer.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📸 Features
 
-### `npm run build`
+- ✅ Detects the **Rukū** posture using your device's webcam
+- ✅ Counts how many times Rukū has been performed
+- ✅ Works **in real-time**, even on mobile browsers
+- ✅ Uses a **transparent Rukū icon** instead of your actual image
+- ✅ Offline-capable once deployed
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **ReactJS** – Frontend framework
+- **TensorFlow.js** – For running the trained ML model in-browser
+- **YOLOv8** – Original training format
+- **ONNX → TFJS conversion** – Model optimized for web
+- **react-webcam** – To capture live video frames
+- **Custom pose classification logic** – To control sensitivity and debounce counts
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/YOUR_USERNAME/ruku-counter.git
+cd ruku-counter
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Install dependencies
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. Start the development server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📂 Project Structure
 
-### Analyzing the Bundle Size
+```
+ruku-counter/
+├── public/
+│   ├── best_web_model/         # TFJS model files (model.json, shards)
+│   ├── ruku-icon.png           # Transparent icon shown when Rukū is detected
+├── src/
+│   ├── App.js                  # Main app logic
+│   ├── App.css                 # Styles
+│   ├── RukuDetector.js         # Detection & model loading logic
+├── README.md
+├── package.json
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🤖 Model Info
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Trained on custom Rukū images using YOLOv8
+- Exported to ONNX and converted to TensorFlow.js
+- Model only detects **one class: `ruku`**
+- Detection thresholds and debounce logic fine-tuned to reduce false positives
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📱 Mobile Use
 
-### Deployment
+You can test the app on your Android device (e.g., Galaxy S24+) using:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Local network (with IP + port from your computer)
+2. Or deploy using tools like **Vercel**, **Netlify**, or **GitHub Pages**
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ⚠️ Known Issues
+
+- May still trigger false positives due to lack of diverse negative training samples
+- Will be improved with more training data (e.g., standing, bowing halfway, background noise)
+
+---
+
+## ✍️ License
+
+MIT License — feel free to use, contribute, and adapt with attribution.
+
+---
+
+## 🤝 Acknowledgments
+
+- [YOLOv8 by Ultralytics](https://github.com/ultralytics/yolov5)
+- [TensorFlow.js](https://www.tensorflow.org/js)
+- [React Webcam](https://www.npmjs.com/package/react-webcam)
+- [Arginoa](https://github.com/Arginoa)
+
+---
+
+**Built with purpose to assist mindful worship through computer vision.**
