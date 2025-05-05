@@ -4,6 +4,7 @@
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
 ![Built with React](https://img.shields.io/badge/built%20with-React-blue)
 ![Built with TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-Enabled-orange)
+![Trained on Colab](https://img.shields.io/badge/Google%20Colab-F9AB00.svg?style=for-the-badge&logo=Google-Colab&logoColor=orange)
 
 > ⚠️ This project is currently **under development**. Features and accuracy will continue to improve over time.
 
